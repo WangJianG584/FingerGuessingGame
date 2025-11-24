@@ -67,12 +67,12 @@ int main()
     short VictoryDecision = PlayerInput -RobotInput;//决定胜负的运算
     switch (VictoryDecision)
     {
-    case static_cast<short>(Ref::PlayerWin1) : std::cout<<"玩家胜"<<std::endl;return 0;break;
-    case static_cast<short>(Ref::PlayerWin2): std::cout<<"玩家胜"<<std::endl;return 0;break;
-    case static_cast<short>(Ref::ComputerWin1) : std::cout<<"电脑胜"<<std::endl;return 0;break;
-    case static_cast<short>(Ref::ComputerWin2) : std::cout<<"电脑胜"<<std::endl;return 0;break;
-    case static_cast<short>(Ref::Dogfall): std::cout<<"玩家和电脑平局"<<std::endl;return 0;break;
-    default:std::cout<<"程序判断出现问题，请联系开发者"<<std::endl;return 555;break;
+    case static_cast<short>(Ref::PlayerWin1) : std::cout<<"玩家胜"<<std::endl;return 0;
+    case static_cast<short>(Ref::PlayerWin2): std::cout<<"玩家胜"<<std::endl;return 0;
+    case static_cast<short>(Ref::ComputerWin1) : std::cout<<"电脑胜"<<std::endl;return 0;
+    case static_cast<short>(Ref::ComputerWin2) : std::cout<<"电脑胜"<<std::endl;return 0;
+    case static_cast<short>(Ref::Dogfall): std::cout<<"玩家和电脑平局"<<std::endl;return 0;
+    default:std::cout<<"程序判断出现问题，请联系开发者"<<std::endl;return 555;
     
     }
 
