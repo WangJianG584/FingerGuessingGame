@@ -1,8 +1,12 @@
 #include<iostream>
 #include<stdlib.h>
+#include<clocale>
+
+enum class Finger:unsigned short{Rock = 1,Shear = 2,Planar =3};
+enum class Ref :short { PlayerWin1 = 2, PlayerWin2 = -1, ComputerWin1 = 1, ComputerWin2 = -2, Dogfall = 0 };
 int main()
 {
-
+    setlocale(LC_ALL, "zh-CN.UTF-8");
     std::cout << "请输入猜拳代码：1代表石头，2代表剪刀，3代表布"<<std::endl;
     unsigned short PlayerInput,RobotInput; //创建玩家和电脑的猜拳输入变量
     std::string PlayerChoosesDisplay,RobotChoosesDisplay;//创建显示输入变量的中文
@@ -13,9 +17,9 @@ int main()
         std::cin >> PlayerInput;
         switch(PlayerInput)//我认为一大段话里面有少许的改动，为此写大部分相同的三句话，我感觉不值
         {
-            case 1 :PlayerChoosesDisplay ="石头" ;break;
-            case 2 :PlayerChoosesDisplay ="剪刀";break;
-            case 3 :PlayerChoosesDisplay ="布";break;
+            case static_cast<short>(Finger::Rock) :PlayerChoosesDisplay ="石头" ;break;
+            case static_cast<short>(Finger::Shear):PlayerChoosesDisplay ="剪刀";break;
+            case static_cast<short>(Finger::Planar):PlayerChoosesDisplay ="布";break;
             default:std::cout<<"输入非法,请重新输入";OutlierDetection = true;break;//当遇到异常值时，出现例外，开始让用户重新输入
         }
     } while (OutlierDetection);
@@ -46,28 +50,28 @@ int main()
 
     switch(PlayerInput)
     {
-        case 1 :PlayerChoosesDisplay ="石头" ;break; //刷新显示实时的猜拳状况
-        case 2 :PlayerChoosesDisplay ="剪刀";break;
-        case 3 :PlayerChoosesDisplay ="布";break;
+        case static_cast<short>(Finger::Rock) :PlayerChoosesDisplay ="石头" ;break; //刷新显示实时的猜拳状况
+        case static_cast<short>(Finger::Shear) :PlayerChoosesDisplay ="剪刀";break;
+        case static_cast<short>(Finger::Planar) :PlayerChoosesDisplay ="布";break;
             
     }
 
     switch(RobotInput)
     {
-        case 1 :RobotChoosesDisplay ="石头" ;break;
-        case 2 :RobotChoosesDisplay ="剪刀";break;
-        case 3 :RobotChoosesDisplay ="布";break;
+        case static_cast<short>(Finger::Rock) :RobotChoosesDisplay ="石头" ;break;
+        case static_cast<short>(Finger::Shear):RobotChoosesDisplay ="剪刀";break;
+        case static_cast<short>(Finger::Planar) :RobotChoosesDisplay ="布";break;
             
     }    
     std::cout<<"玩家选择出"<<PlayerChoosesDisplay<<"，电脑选择出"<<RobotChoosesDisplay<<std::endl;
     short VictoryDecision = PlayerInput -RobotInput;//决定胜负的运算
     switch (VictoryDecision)
     {
-    case 2: std::cout<<"玩家胜"<<std::endl;return 0;break;
-    case -1: std::cout<<"玩家胜"<<std::endl;return 0;break;
-    case 1: std::cout<<"电脑胜"<<std::endl;return 0;break;
-    case -2: std::cout<<"电脑胜"<<std::endl;return 0;break;
-    case 0: std::cout<<"玩家和电脑平局"<<std::endl;return 0;break;
+    case static_cast<short>(Ref::PlayerWin1) : std::cout<<"玩家胜"<<std::endl;return 0;break;
+    case static_cast<short>(Ref::PlayerWin2): std::cout<<"玩家胜"<<std::endl;return 0;break;
+    case static_cast<short>(Ref::ComputerWin1) : std::cout<<"电脑胜"<<std::endl;return 0;break;
+    case static_cast<short>(Ref::ComputerWin2) : std::cout<<"电脑胜"<<std::endl;return 0;break;
+    case static_cast<short>(Ref::Dogfall): std::cout<<"玩家和电脑平局"<<std::endl;return 0;break;
     default:std::cout<<"程序判断出现问题，请联系开发者"<<std::endl;return 555;break;
     
     }
