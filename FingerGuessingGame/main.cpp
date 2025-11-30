@@ -4,6 +4,13 @@
 
 enum class Finger:unsigned short{Rock = 1,Shear = 2,Planar =3};
 enum class Ref :short { PlayerWin1 = 2, PlayerWin2 = -1, ComputerWin1 = 1, ComputerWin2 = -2, Dogfall = 0 };
+short Judgment(short PlayerInput, short RobotInput)
+{
+   return PlayerInput - RobotInput;
+
+}
+
+
 int main()
 {
     setlocale(LC_ALL, "zh-CN.UTF-8");
@@ -64,8 +71,8 @@ int main()
             
     }    
     std::cout<<"玩家选择出"<<PlayerChoosesDisplay<<"，电脑选择出"<<RobotChoosesDisplay<<std::endl;
-    short VictoryDecision = PlayerInput -RobotInput;//决定胜负的运算
-    switch (VictoryDecision)
+  
+    switch (Judgment(PlayerInput,RobotInput))
     {
     case static_cast<short>(Ref::PlayerWin1) : std::cout<<"玩家胜"<<std::endl;return 0;
     case static_cast<short>(Ref::PlayerWin2): std::cout<<"玩家胜"<<std::endl;return 0;
