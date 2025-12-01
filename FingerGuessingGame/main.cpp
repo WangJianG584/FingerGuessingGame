@@ -4,12 +4,17 @@
 
 enum class Finger:unsigned short{Rock = 1,Shear = 2,Planar =3};
 enum class Ref :short { PlayerWin1 = 2, PlayerWin2 = -1, ComputerWin1 = 1, ComputerWin2 = -2, Dogfall = 0 };
+
 short Judgment(short PlayerInput, short RobotInput)
 {
    return PlayerInput - RobotInput;
-
 }
 
+short  RobotRandomFinger(void)
+{
+    srand((unsigned)time(NULL));//电脑开始猜拳
+    return rand() % 3 + 1;
+}
 
 int main()
 {
@@ -31,13 +36,12 @@ int main()
         }
     } while (OutlierDetection);
 
-    srand((unsigned)time(NULL));//电脑开始猜拳
-    RobotInput = rand() % 3 + 1;
+    
     
     unsigned short PlayersSwapFlag; //创建变量用于决定是否交换猜拳决定
     std::cout<<"玩家方选择"<<PlayerChoosesDisplay<<"，\n"<<"能选择和电脑方交换出拳，\n"<<"0代表保持原样，1代表交换出拳"<<std::endl;
     
-    
+    RobotInput = RobotRandomFinger();
     std::cin >> PlayersSwapFlag;
 
     if (PlayersSwapFlag == 1)
