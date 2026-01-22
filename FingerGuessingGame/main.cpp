@@ -1,7 +1,6 @@
 #include<iostream>
 #include<stdlib.h>
 #include<clocale>
-
 enum class Finger:unsigned short{Rock = 1,Shear = 2,Planar =3};
 enum class Ref :short { PlayerWin1 = 2, PlayerWin2 = -1, ComputerWin1 = 1, ComputerWin2 = -2, Dogfall = 0 };
 
@@ -18,6 +17,7 @@ short  RobotRandomFinger(void)
 
 int main()
 {
+    std::ios::sync_with_stdio(false);
     setlocale(LC_ALL, "zh-CN.UTF-8");
     std::cout << "请输入猜拳代码：1代表石头，2代表剪刀，3代表布"<<std::endl;
     unsigned short PlayerInput,RobotInput; //创建玩家和电脑的猜拳输入变量
